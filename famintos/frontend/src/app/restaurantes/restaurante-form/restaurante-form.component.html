@@ -1,0 +1,28 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<form novalidates [formGroup]="formulario" >
+    <div class="ui-g mt-2">
+      <div class="ui-g-12">
+        <span class="ui-float-label">
+          <input id="nome" type="text" size="30" class="w-100" pInputText required formControlName="nome" />
+          <label for="nome">Nome</label>
+        </span>
+        <p-message severity="error" text="O campo Nome é obrigatório." *ngIf="verificarRequired('nome')"></p-message>
+        <p-message severity="error" text="O campo Nome deve ter pelo menos 2 caracteres." *ngIf="verificarMinLength('nome')"></p-message>
+      </div>
+    </div>
+    <div class="ui-g py-3">
+      <div class="ui-g-12">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" class="w-100" pInputText formControlName="endereco" />
+          <label for="float-input">Endereço</label>
+        </span>
+        <p-message class="mt-2" severity="error" text="O campo Endereço é obrigatório!" *ngIf="verificarValidTouchedDirty('endereco')"></p-message>
+      </div>
+    </div>
+    <div class="ui-g ">
+      <div class="ui-g-12">
+          <button pButton label="Salvar" class="float-right" (click)="submitForm()"></button>
+          <button pButton  label="Cancelar" type="button" class="float-right ui-button-secondary mr-1" (click)="cancelar()"></button>
+      </div>
+    </div>
+  </form>

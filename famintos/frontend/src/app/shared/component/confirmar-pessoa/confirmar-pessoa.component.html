@@ -1,28 +1,27 @@
 <p-toast [style]="{marginTop: '80px'}"></p-toast>
-<form novalidates [formGroup]="formulario" >
-    <div class="ui-g mt-2">
-      <div class="ui-g-12">
-        <span class="ui-float-label">
-          <input id="usuario" type="text" size="30" class="w-100" pInputText required formControlName="userName" />
-          <label for="usuario">Usuário</label>
-        </span>
-        <p-message severity="error" text="O campo Usuário é obrigatório." *ngIf="verificarRequired('userName')"></p-message>
-      </div>
+<form novalidates [formGroup]="formulario">
+  <div class="ui-g mt-2">
+    <div class="ui-g-12">
+      <span class="ui-float-label">
+        <input id="usuario" type="text"  class="w-100" pInputText required formControlName="userName" />
+        <label for="usuario">Usuário</label>
+      </span>
     </div>
-    <div class="ui-g py-3">
-      <div class="ui-g-12">
-        <span class="ui-float-label">
-          <input id="float-input" type="text" size="30" class="w-100" pInputText formControlName="senha" />
-          <label for="float-input">Senha</label>
-        </span>
-        <p-message class="mt-2" severity="error" text="A senha é obrigatória!" *ngIf="verificarValidTouchedDirty('Senha')"></p-message>
-      </div>
+  </div>
+  <div class="ui-g py-3">
+    <div class="ui-g-12">
+      <span class="ui-float-label">
+        <input id="float-input" type="password" pPassword size="30" class="w-100" formControlName="senha"
+        [feedback]="false" promptLabel="Por favor insira uma senha" />
+        <label for="float-input">Senha</label>
+      </span>
     </div>
-    <div class="ui-g ">
-      <div class="ui-g-12">
-          <button pButton label="Salvar" class="float-right" (click)="submitForm()"></button>
-          <button pButton  label="Cancelar" type="button" class="float-right ui-button-secondary mr-1" (click)="cancelar()"></button>
-      </div>
+  </div>
+  <div class="ui-g ">
+    <div class="ui-g-12">
+      <button pButton label="Ok" class="float-right" (click)="submitForm()" [disabled]="botaoDesabilitado"></button>
+      <button pButton label="Cancelar" type="button" class="float-right ui-button-secondary mr-1"
+        (click)="cancelar()"></button>
     </div>
-  </form>
-
+  </div>
+</form>

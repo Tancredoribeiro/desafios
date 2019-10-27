@@ -5,12 +5,14 @@ import { ListarRestauranteComponent } from './restaurantes/listar-restaurante/li
 import { CriarRestauranteComponent } from './restaurantes/criar-restaurante/criar-restaurante.component';
 import { EditarRestauranteComponent } from './restaurantes/editar-restaurante/editar-restaurante.component';
 import { VotarComponent } from './votacoes/votar/votar.component';
+import { ClassificacaoComponent } from './votacoes/classificacao/classificacao.component';
 
 const routes: Routes = [
   { path: 'restaurantes', component: ListarRestauranteComponent },
   { path: 'restaurantes/criar', component: CriarRestauranteComponent },
   { path: 'restaurantes/editar/:id', component: EditarRestauranteComponent },
-  { path: 'votacoes/votar', component: VotarComponent }
+  { path: 'votacoes/votar', component: VotarComponent },
+  { path: 'votacoes/classificacao/hoje', component: ClassificacaoComponent }
 ];
 
 

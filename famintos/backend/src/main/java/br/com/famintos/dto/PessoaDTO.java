@@ -7,17 +7,21 @@ import javax.validation.constraints.NotEmpty;
 public class PessoaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
-	
-	@NotEmpty
+
+	@NotEmpty(groups = CriarAtualizarPessoa.class)
 	private String nome;
-	
-	@NotEmpty
+
+	@NotEmpty(groups = CriarAtualizarPessoa.class)
 	private String userName;
-	
-	@NotEmpty
+
+	@NotEmpty(groups = CriarAtualizarPessoa.class)
 	private String senha;
+
+	public PessoaDTO() {
+		super();
+	}
 
 	public Long getId() {
 		return id;
@@ -50,7 +54,8 @@ public class PessoaDTO implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
+
+	public interface CriarAtualizarPessoa {
+	}
 
 }

@@ -29,6 +29,10 @@ public class VotoDTO implements Serializable {
 	@NotNull
 	private Restaurante restaurante;
 
+	public VotoDTO() {
+		super();
+	}
+
 	private Date data;
 
 	public Long getId() {

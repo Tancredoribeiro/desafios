@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
+import {PasswordModule} from 'primeng/password';
 import { PanelModule } from 'primeng/panel';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
@@ -13,6 +14,7 @@ import {TableModule} from 'primeng/table';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DialogModule} from 'primeng/dialog';
 import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar-pessoa.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [ConfirmarPessoaComponent],
@@ -22,12 +24,14 @@ import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar
     HttpClientModule,
     MenubarModule,
     InputTextModule,
+    PasswordModule,
     PanelModule,
     MessageModule,
     ToastModule,
     ButtonModule,
     TableModule,
-    DialogModule
+    DialogModule,
+    FontAwesomeModule
   ],
   exports: [
     CommonModule,
@@ -35,6 +39,7 @@ import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar
     HttpClientModule,
     MenubarModule,
     InputTextModule,
+    PasswordModule,
     PanelModule,
     MessageModule,
     ToastModule,
@@ -42,7 +47,8 @@ import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar
     TableModule,
     ConfirmDialogModule,
     DialogModule,
-    ConfirmarPessoaComponent
+    ConfirmarPessoaComponent,
+    FontAwesomeModule
   ]
 })
 export class SharedModule { }

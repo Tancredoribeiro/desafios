@@ -8,7 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ConfirmarPessoaComponent implements OnInit {
 
-  formulario: FormGroup;
+  @Input() formulario: FormGroup;
   @Output() submitted = new EventEmitter<FormGroup>();
   @Output() cancelado = new EventEmitter();
 
@@ -16,9 +16,8 @@ export class ConfirmarPessoaComponent implements OnInit {
 
   ngOnInit() {
     this.formulario = this.fb.group({
-      id: [null],
-      nome: ['', [Validators.required]],
-      endereco: ['', Validators.required]
+      userName: ['', Validators.required],
+      senha: ['', Validators.required]
     });
   }
 
@@ -30,17 +29,16 @@ export class ConfirmarPessoaComponent implements OnInit {
   cancelar() {
     this.cancelado.emit();
   }
-  verificarValidTouchedDirty(campo: string) {
-    return (
-      !this.formulario.get(campo).valid &&
-      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
-    );
-  }
 
   verificarRequired(campo: string) {
     return (
+      this.formulario.get(campo) &&
       this.formulario.get(campo).hasError('required') &&
-      (this.formulario.get(campo).touched || this.formulario.get(campo).dirty)
+      (this.formulario.get(campo).touched || !this.formulario.get(campo).dirty)
     );
+  }
+
+  get botaoDesabilitado() {
+    return this.formulario && !this.formulario.valid;
   }
 }

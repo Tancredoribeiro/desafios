@@ -6,6 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RestauranteFormComponent } from './restaurante-form/restaurante-form.component';
 import { RestauranteCrudBaseComponent } from './restaurante-crud-base/restaurante-crud-base.component';
 import { RestauranteService } from '../services/restaurante.service';
+import { VotoService } from '../services/voto.service';
 
 
 
@@ -19,6 +20,6 @@ import { RestauranteService } from '../services/restaurante.service';
   imports: [
     SharedModule
   ],
-  providers: [RestauranteService]
+  providers: [RestauranteService, VotoService]
 })
 export class RestaurantesModule { }

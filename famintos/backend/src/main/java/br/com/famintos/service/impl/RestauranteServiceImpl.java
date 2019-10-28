@@ -57,10 +57,10 @@ public class RestauranteServiceImpl implements RestauranteService {
 	@Override
 	public RestauranteDTO update(@NotNull Long id, RestauranteDTO dto) {
 		Optional<Restaurante> restauranteOpitional = restauranteRepository.findById(id);
-		Restaurante patientLoaded = restauranteOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Restaurante não encontrado com o id %s.", id)));
-		Restaurante patientToSave = new Restaurante(dto);
-		BeanUtils.copyProperties(patientToSave, patientLoaded);
-		return new RestauranteDTO(restauranteRepository.save(patientLoaded));
+		Restaurante restauranteLoaded = restauranteOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Restaurante não encontrado com o id %s.", id)));
+		Restaurante restauranteToSave = new Restaurante(dto);
+		BeanUtils.copyProperties(restauranteToSave, restauranteLoaded);
+		return new RestauranteDTO(restauranteRepository.save(restauranteLoaded));
 	
 	}
 

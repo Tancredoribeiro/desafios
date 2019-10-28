@@ -7,6 +7,7 @@ import { RestauranteFormComponent } from './restaurante-form/restaurante-form.co
 import { RestauranteCrudBaseComponent } from './restaurante-crud-base/restaurante-crud-base.component';
 import { RestauranteService } from '../services/restaurante.service';
 import { VotoService } from '../services/voto.service';
+import { RestaurantesRoutingModuleModule } from './restaurantes-routing-module.module';
 
 
 
@@ -18,8 +19,9 @@ import { VotoService } from '../services/voto.service';
     RestauranteFormComponent,
     RestauranteCrudBaseComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    RestaurantesRoutingModuleModule
   ],
-  providers: [RestauranteService, VotoService]
+  providers: []
 })
 export class RestaurantesModule { }

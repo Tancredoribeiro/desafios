@@ -1,5 +1,6 @@
 package br.com.famintos.domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -16,7 +17,9 @@ import br.com.famintos.dto.RestauranteDTO;
 
 @Entity
 @Table(name = "restaurante")
-public class Restaurante {
+public class Restaurante  implements Serializable{
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

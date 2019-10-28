@@ -7,14 +7,16 @@ import { EditarRestauranteComponent } from './restaurantes/editar-restaurante/ed
 import { VotarComponent } from './votacoes/votar/votar.component';
 import { ClassificacaoComponent } from './votacoes/classificacao/classificacao.component';
 import { ClassificacaoGeralComponent } from './votacoes/classificacao-geral/classificacao-geral.component';
+import { CriarPessoaComponent } from './pessoas/criar-pessoa/criar-pessoa.component';
 
 const routes: Routes = [
-  { path: 'restaurantes', component: ListarRestauranteComponent },
-  { path: 'restaurantes/criar', component: CriarRestauranteComponent },
-  { path: 'restaurantes/editar/:id', component: EditarRestauranteComponent },
+
+  { path: 'restaurantes',  loadChildren: './restaurantes/restaurantes.module#RestaurantesModule'
+    },
   { path: 'votacoes/votar', component: VotarComponent },
   { path: 'votacoes/classificacao/hoje', component: ClassificacaoComponent },
-  { path: 'votacoes/classificacao/geral', component: ClassificacaoGeralComponent }
+  { path: 'votacoes/classificacao/geral', component: ClassificacaoGeralComponent },
+  { path: 'pessoas/criar', component: CriarPessoaComponent }
 ];
 
 

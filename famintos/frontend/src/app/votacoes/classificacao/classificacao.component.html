@@ -35,7 +35,7 @@
 <p-dialog  [(visible)]="mostrarDialogoVotantes" [modal]="true" (onHide)="fechar()"
   [contentStyle]="{'max-width':'400px'}">
   <p-header>
-    {{ restauranteSelecionado.nome }} - Votantes
+    {{ restauranteSelecionado?.nome }} - Votantes
   </p-header>
   <div class="ui-g">
     <div class="ui-g-12"  *ngIf="(votantes$ | async) as votantes;">

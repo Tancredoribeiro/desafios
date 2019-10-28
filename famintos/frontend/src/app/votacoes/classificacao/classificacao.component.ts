@@ -14,7 +14,7 @@ import { faTrophy } from '@fortawesome/free-solid-svg-icons';
   selector: 'app-classificacao',
   templateUrl: './classificacao.component.html',
   styleUrls: ['./classificacao.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService, RestauranteService, VotoService]
 })
 export class ClassificacaoComponent implements OnInit {
 

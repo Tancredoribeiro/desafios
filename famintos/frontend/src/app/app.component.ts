@@ -22,7 +22,10 @@ export class AppComponent implements OnInit {
           { label: 'Ranking de hoje', routerLink: ['/votacoes/classificacao/hoje'] },
           { label: 'Historico', routerLink: ['/votacoes/classificacao/geral'] },
         ]
-      }
+      },
+      {
+        label: 'Pessoas', routerLink: ['/pessoas/criar'],
+      },
     ];
   }
 }

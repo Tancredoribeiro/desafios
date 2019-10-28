@@ -11,7 +11,7 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
   selector: 'app-criar-restaurante',
   templateUrl: './criar-restaurante.component.html',
   styleUrls: ['./criar-restaurante.component.css'],
-  providers: [MessageService]
+  providers: [MessageService, RestauranteService]
 })
 export class CriarRestauranteComponent extends RestauranteCrudBaseComponent implements OnInit {
   restauranteForm: FormGroup;

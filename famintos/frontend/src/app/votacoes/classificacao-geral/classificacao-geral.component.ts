@@ -13,7 +13,8 @@ import { ClassificacaoGeral } from 'src/app/models/classificacao-geral.model';
 @Component({
   selector: 'app-classificacao-geral',
   templateUrl: './classificacao-geral.component.html',
-  styleUrls: ['./classificacao-geral.component.css']
+  styleUrls: ['./classificacao-geral.component.css'],
+  providers: [VotoService]
 })
 export class ClassificacaoGeralComponent implements OnInit {
 

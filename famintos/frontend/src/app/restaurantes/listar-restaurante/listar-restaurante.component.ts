@@ -19,7 +19,7 @@ import { HttpErrorResponse } from '@angular/common/http';
   selector: 'app-listar-restaurante',
   templateUrl: './listar-restaurante.component.html',
   styleUrls: ['./listar-restaurante.component.css'],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService, RestauranteService, VotoService]
 })
 export class ListarRestauranteComponent implements OnInit {
 

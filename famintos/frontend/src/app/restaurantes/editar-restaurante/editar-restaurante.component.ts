@@ -13,7 +13,7 @@ import { RestauranteService } from 'src/app/services/restaurante.service';
   selector: 'app-editar-restaurante',
   templateUrl: './editar-restaurante.component.html',
   styleUrls: ['./editar-restaurante.component.css'],
-  providers: [MessageService]
+  providers: [MessageService, RestauranteService]
 })
 export class EditarRestauranteComponent extends RestauranteCrudBaseComponent implements OnInit {
 

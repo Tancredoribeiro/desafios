@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.famintos.domain.Voto;
+import br.com.famintos.dto.ClassificacaoGeralDTO;
 import br.com.famintos.dto.ClassificacaoHojeDTO;
 import br.com.famintos.dto.PessoaDTO;
 import br.com.famintos.dto.VotoDTO;
@@ -43,6 +44,12 @@ public class VotoController {
 	@ResponseStatus(code = HttpStatus.OK)
 	public List<ClassificacaoHojeDTO> buscarClassificacaoHoje() {
 		return votoService.buscarClassificacaoHoje();
+	}
+	
+	@GetMapping(value = "/classificacao/geral" , produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(code = HttpStatus.OK)
+	public List<ClassificacaoGeralDTO> buscarClassificacaoGeral() {
+		return votoService.buscarClassificacaoGeral();
 	}
 	
 	@GetMapping(value = "/votantes/{idRestaurante}" , produces = MediaType.APPLICATION_JSON_VALUE)

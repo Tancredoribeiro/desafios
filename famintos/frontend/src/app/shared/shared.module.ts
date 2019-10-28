@@ -15,6 +15,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {DialogModule} from 'primeng/dialog';
 import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar-pessoa.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 @NgModule({
   declarations: [ConfirmarPessoaComponent],
@@ -31,7 +32,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ButtonModule,
     TableModule,
     DialogModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FullCalendarModule
   ],
   exports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ConfirmDialogModule,
     DialogModule,
     ConfirmarPessoaComponent,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FullCalendarModule
   ]
 })
 export class SharedModule { }

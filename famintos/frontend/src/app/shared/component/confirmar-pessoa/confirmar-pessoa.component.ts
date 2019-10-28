@@ -12,13 +12,9 @@ export class ConfirmarPessoaComponent implements OnInit {
   @Output() submitted = new EventEmitter<FormGroup>();
   @Output() cancelado = new EventEmitter();
 
-  constructor(public fb: FormBuilder) { }
+  constructor() { }
 
   ngOnInit() {
-    this.formulario = this.fb.group({
-      userName: ['', Validators.required],
-      senha: ['', Validators.required]
-    });
   }
 
   submitForm() {
@@ -28,6 +24,7 @@ export class ConfirmarPessoaComponent implements OnInit {
 
   cancelar() {
     this.cancelado.emit();
+    this.formulario.reset();
   }
 
   verificarRequired(campo: string) {
@@ -38,7 +35,4 @@ export class ConfirmarPessoaComponent implements OnInit {
     );
   }
 
-  get botaoDesabilitado() {
-    return this.formulario && !this.formulario.valid;
-  }
 }

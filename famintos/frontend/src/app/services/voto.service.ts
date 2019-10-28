@@ -5,6 +5,7 @@ import { Pessoa } from '../models/pessoa.model';
 import { Restaurante } from '../models/restaurante.model';
 import { take } from 'rxjs/operators';
 import { ClassificacaoHoje } from '../models/classificacao-hoje.model';
+import { ClassificacaoGeral } from '../models/classificacao-geral.model';
 
 @Injectable()
 export class VotoService {
@@ -23,6 +24,10 @@ export class VotoService {
 
   buascarPessoasVotantesPorRestaurante(restaurante: Restaurante) {
     return this.http.get<Pessoa[]>(`${this.URI}/votantes/${restaurante.id}`).pipe(take(1));
+  }
+
+  buscarClassificacaoGeral() {
+    return this.http.get<ClassificacaoGeral[]>(`${this.URI}/classificacao/geral`).pipe(take(1));
   }
 
 }

@@ -9,7 +9,7 @@ import { ConfirmationService } from 'primeng/api';
 
 import { RestauranteService } from '../../services/restaurante.service';
 import { Restaurante } from '../../models/restaurante.model';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PessoaService } from 'src/app/services/pessoa.service';
 import { VotoService } from 'src/app/services/voto.service';
 import { Pessoa } from 'src/app/models/pessoa.model';
@@ -27,6 +27,8 @@ export class ListarRestauranteComponent implements OnInit {
   mostrarDialogoConfirmacao = false;
   restauranteSelecionado: Restaurante;
 
+  formularioPessoa: FormGroup;
+
   constructor(
     private restauranteService: RestauranteService,
     private pessoaService: PessoaService,
@@ -34,11 +36,16 @@ export class ListarRestauranteComponent implements OnInit {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit() {
     this.recarregar();
+    this.formularioPessoa = this.fb.group({
+      userName: ['', Validators.required],
+      senha: ['', Validators.required]
+    });
   }
 
   editar(id) {
@@ -92,6 +99,7 @@ export class ListarRestauranteComponent implements OnInit {
         this.messageService.add({ severity: 'info', summary: 'Successo', detail: 'Voto registrado com sucesso.' });
         this.restauranteSelecionado = undefined;
         this.mostrarDialogoConfirmacao = false;
+        this.formularioPessoa.reset()
         this.recarregar();
       },
       (erro: HttpErrorResponse) => {
@@ -117,7 +125,7 @@ export class ListarRestauranteComponent implements OnInit {
   }
 
   mostrarErro() {
-    this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Por favor, corrija os erros abaixo.' });
+    this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao buscar restaurantes.' });
   }
 
 }

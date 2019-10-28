@@ -17,7 +17,11 @@ export class AppComponent implements OnInit {
         label: 'Restaurantes', routerLink: ['/restaurantes'],
       },
       {
-        label: 'Votações', routerLink: ['/votacoes/votar']
+        label: 'Votações',
+        items: [
+          { label: 'Ranking de hoje', routerLink: ['/votacoes/classificacao/hoje'] },
+          { label: 'Historico', routerLink: ['/votacoes/classificacao/geral'] },
+        ]
       }
     ];
   }

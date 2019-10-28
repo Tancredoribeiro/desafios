@@ -1,0 +1,14 @@
+<p-panel>
+    <p-header>
+        <div class="ui-helper-clearfix">
+            <span class="ui-panel-title">Restaurantes</span>
+        </div>
+    </p-header>
+<div class="ui-g mt-2" *ngIf="(classificacoes$ | async) as classificacoes;">
+  <div class="ui-g-12">
+    <full-calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [events]="classificacoes"
+    [buttonText]="{today: 'Hoje'}" [locales]="allLocales" [locale]="pt-br" [displayEventTime]="false" (eventRender)="eventRender($event)">
+    </full-calendar>
+  </div>
+</div>
+</p-panel>

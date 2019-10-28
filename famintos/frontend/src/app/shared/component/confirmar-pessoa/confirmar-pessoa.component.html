@@ -19,7 +19,7 @@
   </div>
   <div class="ui-g ">
     <div class="ui-g-12">
-      <button pButton label="Ok" class="float-right" (click)="submitForm()" [disabled]="botaoDesabilitado"></button>
+      <button pButton label="Ok" class="float-right" (click)="submitForm()" [disabled]="!formulario.valid"></button>
       <button pButton label="Cancelar" type="button" class="float-right ui-button-secondary mr-1"
         (click)="cancelar()"></button>
     </div>

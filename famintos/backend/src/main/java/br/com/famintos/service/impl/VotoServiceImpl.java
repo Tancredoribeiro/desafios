@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.famintos.domain.Pessoa;
 import br.com.famintos.domain.Voto;
+import br.com.famintos.dto.ClassificacaoGeralDTO;
 import br.com.famintos.dto.ClassificacaoHojeDTO;
 import br.com.famintos.dto.PessoaDTO;
 import br.com.famintos.dto.VotoDTO;
@@ -85,6 +86,23 @@ public class VotoServiceImpl implements VotoService {
 		String[] propriadesdesEsxluir = {"senha"};
 		BeanUtils.copyProperties(p, dto, propriadesdesEsxluir);
 		return dto;
+	}
+
+	@Override
+	public List<ClassificacaoGeralDTO> buscarClassificacaoGeral() {
+		List<ClassificacaoGeralDTO> classificacoes = votoRepository.buscarClassificacaoGeral();
+
+		if (!classificacoes.isEmpty()) {
+			Long valorMaisVotado = classificacoes.get(0).getVotos();
+			ClassificacaoGeralDTO primeiroMaisVotado = classificacoes.get(0);
+
+			if (classificacoes.stream()
+					.noneMatch(c -> !c.getIdRestaurante().equals(primeiroMaisVotado.getIdRestaurante())
+							&& c.getVotos().equals(valorMaisVotado))) {
+				classificacoes.get(0).setVencedor(true);
+			}
+		}
+		return classificacoes;
 	}
 
 }

@@ -46,6 +46,6 @@
       Antes de registrar seu voto, por favor, confirme sua identidade informando seu nome de usuário e sua senha.
     </div>
   </div>
-  <app-confirmar-pessoa (submitted)="enviarConfirmacaoPessoa($event)" (cancelado)="cancelarVoto()">
+  <app-confirmar-pessoa (submitted)="enviarConfirmacaoPessoa($event)" (cancelado)="cancelarVoto()" [formulario]="formularioPessoa">
   </app-confirmar-pessoa>
 </p-dialog>

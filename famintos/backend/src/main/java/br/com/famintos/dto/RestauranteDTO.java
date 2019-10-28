@@ -2,6 +2,7 @@ package br.com.famintos.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
 import br.com.famintos.domain.Restaurante;
@@ -12,7 +13,7 @@ public class RestauranteDTO  implements Serializable {
 
 	private Long id;
 
-	@NotEmpty
+	@NotBlank
 	private String nome;
 
 	@NotEmpty

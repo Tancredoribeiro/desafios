@@ -24,6 +24,7 @@ import br.com.famintos.dto.VotoDTO;
 import br.com.famintos.exception.PessoaJaVotouException;
 import br.com.famintos.repository.VotoRepository;
 import br.com.famintos.service.VotoService;
+import br.com.famintos.utils.PessoaUtils;
 
 @Service
 public class VotoServiceImpl implements VotoService {
@@ -78,14 +79,7 @@ public class VotoServiceImpl implements VotoService {
 	@Override
 	public List<PessoaDTO> buascarPessoasVotantesPorRestauranteId(@NotNull Long id) {
 		List<Pessoa> pessoas = votoRepository.buascarPessoasVotantesPorRestauranteId(id);
-		return  pessoas.stream().map( p ->  montarPessoaDTO(p)).collect(Collectors.toList());
-	}
-
-	private PessoaDTO montarPessoaDTO(Pessoa p) {
-		PessoaDTO dto = new PessoaDTO();
-		String[] propriadesdesEsxluir = {"senha"};
-		BeanUtils.copyProperties(p, dto, propriadesdesEsxluir);
-		return dto;
+		return pessoas.stream().map(p -> PessoaUtils.montarPessoaDTO(p)).collect(Collectors.toList());
 	}
 
 	@Override

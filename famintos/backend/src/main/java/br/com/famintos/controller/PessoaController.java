@@ -1,5 +1,7 @@
 package br.com.famintos.controller;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.famintos.domain.Pessoa;
 import br.com.famintos.dto.PessoaDTO;
 import br.com.famintos.dto.PessoaValidaDTO;
+import br.com.famintos.dto.RestauranteDTO;
 import br.com.famintos.service.PessoaService;
 import javassist.NotFoundException;
 
@@ -34,9 +37,14 @@ public class PessoaController {
 		this.pessoaService = pessoaService;
 	}
 	
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<PessoaDTO> buscarTodasPessoas() {
+		return pessoaService.buscarTodos();
+	}
+	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
-	public Pessoa getRestaurante(@PathVariable("id") @NotNull Long id) throws NotFoundException {
+	public Pessoa getPessoa(@PathVariable("id") @NotNull Long id) throws NotFoundException {
 		return pessoaService.buscarPorId(id);
 	}
 

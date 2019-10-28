@@ -12,12 +12,12 @@ public interface RestauranteService {
 
 	RestauranteDTO criar(RestauranteDTO dto);
 
-	List<RestauranteDTO> findAll();
+	List<RestauranteDTO> buscarTodos();
 
-	Restaurante findById(@NotNull Long id) throws NotFoundException;
+	Restaurante buscarPorId(@NotNull Long id) throws NotFoundException;
 
-	void deleteById(@NotNull Long id);
+	void excluirPorId(@NotNull Long id);
 
-	RestauranteDTO update(@NotNull Long id, RestauranteDTO dto);
+	RestauranteDTO atualizar(@NotNull Long id, RestauranteDTO dto);
 
 }

@@ -35,7 +35,7 @@ public class RestauranteServiceImpl implements RestauranteService {
 	}
 
 	@Override
-	public List<RestauranteDTO> findAll() {
+	public List<RestauranteDTO> buscarTodos() {
 		Sort sort = Sort.by("nome").ascending();
 		List<Restaurante> restaurantes = restauranteRepository.findAll(sort);
 		
@@ -43,19 +43,19 @@ public class RestauranteServiceImpl implements RestauranteService {
 	}
 
 	@Override
-	public Restaurante findById(Long id) throws NotFoundException {
+	public Restaurante buscarPorId(Long id) throws NotFoundException {
 		return restauranteRepository.findById(id).orElseThrow(() -> new NotFoundException("Restaurante não encontrado."));
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void excluirPorId(Long id) {
 		Optional<Restaurante> restauranteOpitional = restauranteRepository.findById(id);
 		Restaurante restauranteLoaded = restauranteOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Restaurante não encontrado com o id %s.", id)));
 		restauranteRepository.delete(restauranteLoaded);
 	}
 
 	@Override
-	public RestauranteDTO update(@NotNull Long id, RestauranteDTO dto) {
+	public RestauranteDTO atualizar(@NotNull Long id, RestauranteDTO dto) {
 		Optional<Restaurante> restauranteOpitional = restauranteRepository.findById(id);
 		Restaurante restauranteLoaded = restauranteOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Restaurante não encontrado com o id %s.", id)));
 		Restaurante restauranteToSave = new Restaurante(dto);

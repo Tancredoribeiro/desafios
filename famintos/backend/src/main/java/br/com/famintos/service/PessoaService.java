@@ -1,5 +1,7 @@
 package br.com.famintos.service;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 import br.com.famintos.domain.Pessoa;
@@ -18,5 +20,7 @@ public interface PessoaService {
 	PessoaDTO atualizar(@NotNull Long id, PessoaDTO dto);
 
 	void excluir(@NotNull Long id);
+
+	List<PessoaDTO> buscarTodos();
 
 }

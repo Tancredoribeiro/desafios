@@ -1,20 +1,26 @@
 package br.com.famintos.service.impl;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.famintos.domain.Pessoa;
+import br.com.famintos.domain.Restaurante;
 import br.com.famintos.dto.PessoaDTO;
 import br.com.famintos.dto.PessoaValidaDTO;
+import br.com.famintos.dto.RestauranteDTO;
 import br.com.famintos.exception.PessoaNaoEncontradaException;
 import br.com.famintos.repository.PessoaRepository;
 import br.com.famintos.service.PessoaService;
+import br.com.famintos.utils.PessoaUtils;
 import javassist.NotFoundException;
 
 @Service
@@ -58,7 +64,8 @@ public class PessoaServiceImpla implements PessoaService {
 	@Override
 	public PessoaDTO atualizar(@NotNull Long id, PessoaDTO dto) {
 		Optional<Pessoa> pessoaOpitional = pessoaRepository.findById(id);
-		Pessoa pessoaLoaded = pessoaOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Pessoa não encontrado com o id %s.", id)));
+		Pessoa pessoaLoaded = pessoaOpitional.orElseThrow(
+				() -> new EntityNotFoundException(String.format("Pessoa não encontrado com o id %s.", id)));
 		Pessoa pessoaToSave = new Pessoa();
 		BeanUtils.copyProperties(dto, pessoaToSave);
 		BeanUtils.copyProperties(pessoaToSave, pessoaLoaded);
@@ -69,9 +76,17 @@ public class PessoaServiceImpla implements PessoaService {
 	@Override
 	public void excluir(@NotNull Long id) {
 		Optional<Pessoa> pessoaOpitional = pessoaRepository.findById(id);
-		Pessoa pessoaLoaded = pessoaOpitional.orElseThrow(() -> new EntityNotFoundException(String.format("Pessoa não encontrado com o id %s.", id)));
+		Pessoa pessoaLoaded = pessoaOpitional.orElseThrow(
+				() -> new EntityNotFoundException(String.format("Pessoa não encontrado com o id %s.", id)));
 		pessoaRepository.delete(pessoaLoaded);
-		
+
 	}
 
+	@Override
+	public List<PessoaDTO> buscarTodos() {
+		Sort sort = Sort.by("nome").ascending();
+		List<Pessoa> pessoas = pessoaRepository.findAll(sort);
+
+		return pessoas.stream().map(p -> PessoaUtils.montarPessoaDTO(p)).collect(Collectors.toList());
+	}
 }

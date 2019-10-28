@@ -35,13 +35,13 @@ public class RestauranteController {
 
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<RestauranteDTO> buscarTodosRestaurantes() {
-		return restauranteService.findAll();
+		return restauranteService.buscarTodos();
 	}
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
 	public Restaurante getRestaurante(@PathVariable("id") @NotNull Long id) throws NotFoundException {
-		return restauranteService.findById(id);
+		return restauranteService.buscarPorId(id);
 	}
 
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,14 +52,14 @@ public class RestauranteController {
 	
 	@PutMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
-	public RestauranteDTO update(@PathVariable("id")  @NotNull Long id, @RequestBody @Validated RestauranteDTO dto) {
-		return restauranteService.update(id, dto);
+	public RestauranteDTO atualizar(@PathVariable("id")  @NotNull Long id, @RequestBody @Validated RestauranteDTO dto) {
+		return restauranteService.atualizar(id, dto);
 	}
 
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public ResponseEntity<Object> excluir(@PathVariable("id") @NotNull Long id) {
-		restauranteService.deleteById(id);
+		restauranteService.excluirPorId(id);
 		return ResponseEntity.noContent().build();
 	}
 

@@ -13,7 +13,7 @@ public interface PessoaService {
 
 	PessoaDTO validar(PessoaValidaDTO dto);
 
-	Pessoa buscarPorId(@NotNull Long id) throws NotFoundException;
+	PessoaDTO buscarPorId(@NotNull Long id) throws NotFoundException;
 
 	PessoaDTO criar(PessoaDTO dto);
 

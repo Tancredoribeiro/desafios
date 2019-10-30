@@ -44,7 +44,7 @@ export class EditarRestauranteComponent extends RestauranteCrudBaseComponent imp
   }
 
 
-  submit(restauranteForm: FormGroup) {
+  submit() {
     console.log('Form Restaurante evento emitido:', this.restauranteForm);
     if (this.restauranteForm.valid) {
       this.restauranteService.atualizar(this.restauranteForm.value).subscribe(

@@ -19,10 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.famintos.domain.Pessoa;
 import br.com.famintos.dto.PessoaDTO;
 import br.com.famintos.dto.PessoaValidaDTO;
-import br.com.famintos.dto.RestauranteDTO;
 import br.com.famintos.service.PessoaService;
 import javassist.NotFoundException;
 
@@ -44,7 +42,7 @@ public class PessoaController {
 	
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
-	public Pessoa getPessoa(@PathVariable("id") @NotNull Long id) throws NotFoundException {
+	public PessoaDTO getPessoa(@PathVariable("id") @NotNull Long id) throws NotFoundException {
 		return pessoaService.buscarPorId(id);
 	}
 

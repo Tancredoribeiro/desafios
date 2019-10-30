@@ -43,8 +43,12 @@ public class RestauranteServiceImpl implements RestauranteService {
 	}
 
 	@Override
-	public Restaurante buscarPorId(Long id) throws NotFoundException {
-		return restauranteRepository.findById(id).orElseThrow(() -> new NotFoundException("Restaurante não encontrado."));
+	public RestauranteDTO buscarPorId(Long id) throws NotFoundException {
+		Optional<Restaurante> restauranteOpitional = restauranteRepository.findById(id);
+		Restaurante restauranteLoaded = restauranteOpitional.orElseThrow(() -> new NotFoundException(String.format("Restaurante não encontrado com o id %s.", id)));
+		RestauranteDTO dto = new RestauranteDTO();
+		BeanUtils.copyProperties(restauranteLoaded, dto);
+		return dto;
 	}
 
 	@Override

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.famintos.domain.Restaurante;
 import br.com.famintos.dto.RestauranteDTO;
 import br.com.famintos.service.RestauranteService;
 import javassist.NotFoundException;
@@ -40,7 +39,7 @@ public class RestauranteController {
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(code = HttpStatus.OK)
-	public Restaurante getRestaurante(@PathVariable("id") @NotNull Long id) throws NotFoundException {
+	public RestauranteDTO getRestaurante(@PathVariable("id") @NotNull Long id) throws NotFoundException {
 		return restauranteService.buscarPorId(id);
 	}
 

@@ -117,7 +117,6 @@ export class ListarRestauranteComponent implements OnInit {
   recarregar() {
     this.restaurantes$ = this.restauranteService.buscarTodosRestaurantes().pipe(
       catchError(error => {
-        console.error(error);
         this.mostrarErro();
         return empty();
       })

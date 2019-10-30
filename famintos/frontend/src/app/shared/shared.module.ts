@@ -16,6 +16,7 @@ import {DialogModule} from 'primeng/dialog';
 import { ConfirmarPessoaComponent } from './component/confirmar-pessoa/confirmar-pessoa.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [ConfirmarPessoaComponent],
@@ -33,7 +34,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     TableModule,
     DialogModule,
     FontAwesomeModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -51,7 +53,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     DialogModule,
     ConfirmarPessoaComponent,
     FontAwesomeModule,
-    FullCalendarModule
+    FullCalendarModule,
+    ProgressSpinnerModule
   ]
 })
 export class SharedModule { }

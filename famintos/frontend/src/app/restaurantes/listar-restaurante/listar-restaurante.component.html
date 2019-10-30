@@ -6,7 +6,7 @@
           <p-button icon="pi pi-plus" iconPos="right" class="float-right" label="Adicionar Restaurante" (click)="criarNovo()"></p-button>
         </div>
     </p-header>
-  <div class="ui-g mt-2"  *ngIf="(restaurantes$ | async) as restaurantes;">
+  <div class="ui-g mt-2"  *ngIf="(restaurantes$ | async) as restaurantes; else loading">
       <p-table [value]="restaurantes">
           <ng-template pTemplate="header">
               <tr>
@@ -49,3 +49,6 @@
   <app-confirmar-pessoa (submitted)="enviarConfirmacaoPessoa($event)" (cancelado)="cancelarVoto()" [formulario]="formularioPessoa">
   </app-confirmar-pessoa>
 </p-dialog>
+<ng-template #loading>
+  <p-progressSpinner [style]="{width: '50px', height: '50px'}" strokeWidth="4" fill="#EEEEEE"  class="d-flex justify-content-center" animationDuration=".5s"></p-progressSpinner>
+</ng-template>

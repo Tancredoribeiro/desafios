@@ -36,9 +36,7 @@ public class PessoaServiceImpla implements PessoaService {
 	@Override
 	public PessoaDTO validar(PessoaValidaDTO dto) {
 		Optional<Pessoa> optional = pessoaRepository.findByUserNameAndSenha(dto.getUserName(), dto.getSenha());
-		Pessoa pessoa = optional.orElseThrow(() -> {
-			throw new PessoaNaoEncontradaException("Username ou senha inválidos ");
-		});
+		Pessoa pessoa = optional.orElseThrow(() -> new PessoaNaoEncontradaException("Username ou senha inválidos "));
 
 		PessoaDTO pessoaDTO = new PessoaDTO();
 		String[] propriedadesExcluidas = { "senha" };
@@ -47,8 +45,16 @@ public class PessoaServiceImpla implements PessoaService {
 	}
 
 	@Override
-	public Pessoa buscarPorId(@NotNull Long id) throws NotFoundException {
-		return pessoaRepository.findById(id).orElseThrow(() -> new NotFoundException("Pessoa não encontrado."));
+	public PessoaDTO buscarPorId(@NotNull Long id) throws NotFoundException {
+		Optional<Pessoa> optional = pessoaRepository.findById(id);
+
+		Pessoa pessoa = optional.orElseThrow(
+				() -> new PessoaNaoEncontradaException(String.format("Pessoa não encontrado com o id %s.", id)));
+
+		PessoaDTO pessoaDTO = new PessoaDTO();
+		String[] propriedadesExcluidas = { "senha" };
+		BeanUtils.copyProperties(pessoa, pessoaDTO, propriedadesExcluidas);
+		return pessoaDTO;
 	}
 
 	@Override

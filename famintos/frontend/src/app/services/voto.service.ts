@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Pessoa } from '../models/pessoa.model';
 import { Restaurante } from '../models/restaurante.model';
@@ -11,11 +11,12 @@ import { ClassificacaoGeral } from '../models/classificacao-geral.model';
 export class VotoService {
 
   private URI = `${environment.API}/votacoes`;
+  headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
 
   constructor(private http: HttpClient) { }
 
   votar(pessoa: Pessoa, restaurante: Restaurante) {
-    return this.http.post(this.URI, {pessoa, restaurante}).pipe(take(1));
+    return this.http.post(this.URI, { pessoa, restaurante }).pipe(take(1));
   }
 
   buscarClassificacaoDeHoje() {
@@ -27,7 +28,7 @@ export class VotoService {
   }
 
   buscarClassificacaoGeral() {
-    return this.http.get<ClassificacaoGeral[]>(`${this.URI}/classificacao/geral`).pipe(take(1));
+    return this.http.get<ClassificacaoGeral[]>(`${this.URI}/classificacao/geral`, { headers: this.headers }).pipe(take(1));
   }
 
 }

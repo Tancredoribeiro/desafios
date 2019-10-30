@@ -14,7 +14,7 @@ public interface RestauranteService {
 
 	List<RestauranteDTO> buscarTodos();
 
-	Restaurante buscarPorId(@NotNull Long id) throws NotFoundException;
+	RestauranteDTO buscarPorId(@NotNull Long id) throws NotFoundException;
 
 	void excluirPorId(@NotNull Long id);
 

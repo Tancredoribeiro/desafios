@@ -9,26 +9,30 @@ import allLocales from '@fullcalendar/core/locales-all';
 
 import { VotoService } from 'src/app/services/voto.service';
 import { ClassificacaoGeral } from 'src/app/models/classificacao-geral.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-classificacao-geral',
   templateUrl: './classificacao-geral.component.html',
   styleUrls: ['./classificacao-geral.component.css'],
-  providers: [VotoService]
+  providers: [VotoService, MessageService]
 })
 export class ClassificacaoGeralComponent implements OnInit {
 
   calendarPlugins = [dayGridPlugin];
   classificacoes$: Observable<ClassificacaoGeral[]>;
   allLocales = allLocales;
+  local = 'pt-br';
 
 
-  constructor(private votoService: VotoService) { }
+  constructor(
+    private votoService: VotoService,
+    private messageService: MessageService) { }
 
   ngOnInit() {
     this.classificacoes$ = this.votoService.buscarClassificacaoGeral().pipe(
       catchError(error => {
-        console.error(error);
+        this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao buscar classificação.' });
         return empty();
       })
     );

@@ -35,7 +35,6 @@ export class ClassificacaoComponent implements OnInit {
 
     this.classificacoes$ = this.votoService.buscarClassificacaoDeHoje().pipe(
       catchError(error => {
-        console.error(error);
         this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Erro ao buscar classificação.' });
         return empty();
       })
@@ -55,5 +54,10 @@ export class ClassificacaoComponent implements OnInit {
     this.votantes$.subscribe(
       values => this.mostrarDialogoVotantes = true
   );
+  }
+
+  fechar() {
+    this.mostrarDialogoVotantes = false;
+    this.restauranteSelecionado = undefined;
   }
 }

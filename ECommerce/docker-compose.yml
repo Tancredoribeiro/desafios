@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+
+  mysql-db:
+    build: ./docker/mysql
+    environment:
+      - MYSQL_DATABASE=ecommecer
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+  app:
+    build: .
+    environment:
+      - ACTIVE_PROFILE=docker
+    ports:
+      - 8080:8080
+    
+    depends_on:
+      - mysql-db
